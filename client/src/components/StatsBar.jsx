@@ -2,7 +2,10 @@ import React from 'react'
 
 const StatsBar = () => {
   return (
-    <div className='mt-10 w-00 h-20 bg-[#1e1f24]/80 rounded-xl  mx-auto max-w-7xl flex items-center  '>
+    <div className='
+     mt-10  h-20  bg-[#1e1f24]/80 rounded-xl  mx-auto max-w-7xl flex items-center
+      transition-all duration-300 border border-transparent hover:border-[#dad8d8]  '>
+        
         <div className='ml-20 flex gap-5 text-white  text-lg '>
             <p>Total: 12</p> 
             <p>Value: $2228</p>

@@ -25,7 +25,7 @@ const addRouter = async (req, res)=>{
 const updateRouter = async (req, res)=>{
    try{
     const { id: routerID } = req.params;
-    const router = await Router.findByIdAndUpdate(routerID, req.body, {
+    const router = await Router.findByIdAndUpdate(id, req.body, {
             new: true,
             runValidators: true
         });

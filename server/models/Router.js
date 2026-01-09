@@ -18,10 +18,10 @@ const routerSchema = new mongoose.Schema({
     status: {
         type: String,
         enum: {
-            values: ['active', 'maintenance', 'broken', 'warehouse'],
+            values: ['active', 'unactive'],
             message: '{VALUE} is not a valid status'
         },
-        default: 'warehouse'
+        default: 'active '
     },
 
     // 3. Financial Data

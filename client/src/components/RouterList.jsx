@@ -1,17 +1,10 @@
 import React from 'react'
 import RouterCard from './RouterCard'
-import { useState } from 'react'
-import { routersData } from '../data/routers.js' // Проверь путь к файлу
 
-const RouterList = () => {
 
-    const [routers, setRouters] = useState(routersData)
+const RouterList = ({routers, onDelete}) => {
 
-    const handleDelete = (id) => {
    
-    setRouters(routers.filter(router => router._id !== id));
-  }
-
 
 
 
@@ -27,7 +20,7 @@ const RouterList = () => {
           price={router.price}
           ipAdress={router.ipAddress} 
           location={router.location}
-          onDelete={handleDelete}
+          onDelete={onDelete}
         />
       ))} 
     </div>

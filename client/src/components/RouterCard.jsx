@@ -1,7 +1,7 @@
 import React from 'react'
 import routerImg from '../assets/routerImg.jpg'
 
-const RouterCard = ({id,name, model,status, price, ipAdress, location, onDelete}) => {
+const RouterCard = ({id,name, model,status, price, ipAdress, location, onDelete, onEdit}) => {
   return (
     <div className=" mx-auto flex h-[430px] w-[300px] flex-col gap-[16px] rounded-xl border border-transparent bg-[#1e1f24]/80 p-10 transition-all duration-300 hover:-translate-y-2 hover:border-[#dad8d8]">
       <img
@@ -41,7 +41,7 @@ const RouterCard = ({id,name, model,status, price, ipAdress, location, onDelete}
       </p>
 
       <div className="flex justify-between">
-        <button className="cursor-pointer rounded-[8px] bg-[#34353c] p-[7px] text-gray-300 transition-all duration-300 hover:bg-[#41424b]">
+        <button onClick={()=>onEdit(id)} className="cursor-pointer rounded-[8px] bg-[#34353c] p-[7px] text-gray-300 transition-all duration-300 hover:bg-[#41424b]">
           Edit
         </button>
 

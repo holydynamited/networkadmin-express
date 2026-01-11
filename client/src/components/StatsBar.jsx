@@ -12,6 +12,10 @@ const StatsBar = ({total, active,value}) => {
             <p>Active: {active}</p>
 
         </div>
+
+        <div>
+          
+        </div>
      
     </div>
   )

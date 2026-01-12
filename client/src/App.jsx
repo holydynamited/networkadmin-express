@@ -38,7 +38,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="min-h-screen pb-60">
      <Header/>
      
       <StatsBar
@@ -66,7 +66,7 @@ function App() {
          
           />
           )}
-    </>
+    </div>
   )
 }
 

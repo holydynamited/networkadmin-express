@@ -1,17 +1,44 @@
 import Header from './components/Header'
-
-import './App.css'
-import { useState} from 'react'
-import { routersData } from './data/routers'
 import StatsBar from './components/StatsBar'
 import RouterCard from './components/router/RouterCard'
 import RouterList from './components/router/RouterList'
 import RouterModal from './components/modals/RouterModal'
 import CreateModal from './components/modals/CreateModal'
+
+import { useEffect, useState} from 'react'
+
+
+import './App.css'
+
+import { fetchRouters, createRouter, deleteRouter, updateRouter } from './api/routers'
+
+
 function App() {
 
   
-  const [routers, setRouters] = useState(routersData)
+  const [routers, setRouters] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  const loadData = async () =>{
+    try {
+      setLoading(true)
+
+      const data = await fetchRouters()
+
+      setRouters(data.routers||[])
+      
+    } catch (error) {
+      console.error("Failed to load routers: ", error)
+
+    }
+    finally{
+      setLoading(false)
+    }
+  }
+
+  useEffect(()=>{
+    loadData()
+  }, [])
   
       const handleDelete = (id) => {
      

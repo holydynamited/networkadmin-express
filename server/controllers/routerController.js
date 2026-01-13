@@ -25,13 +25,13 @@ const addRouter = async (req, res)=>{
 const updateRouter = async (req, res)=>{
    try{
     const { id: routerID } = req.params;
-    const router = await Router.findByIdAndUpdate(id, req.body, {
+    const router = await Router.findByIdAndUpdate(routerID, req.body, {
             new: true,
             runValidators: true
         });
 
         if (!router) {
-            return res.status(404).json({ message: `Router with ${id} is not found` });
+            return res.status(404).json({ message: `Router with ${routerID} is not found` });
         }
 
         res.status(200).json({ router });

@@ -35,8 +35,8 @@ const StatsBar = ({ total, active, value, toggleModal }) => {
         </button>
       </div>
 
-      <div class="mt-2 flex gap-2">
-        <div class="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-gray-600 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2">
+      <div className="mt-2 flex gap-2">
+        <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-gray-600 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2">
           <input
             placeholder="Find router"
             className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-0"

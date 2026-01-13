@@ -20,6 +20,8 @@ function App() {
   const [routers, setRouters] = useState([]);
   const [loading, setLoading] = useState(true);
 
+ 
+
   const loadData = async () => {
     try {
       setLoading(true);
@@ -70,6 +72,23 @@ function App() {
     setSelectedRouter(null);
   };
 
+  const handleCreate = async (newRouterData) => {
+    try {
+      const response = await createRouter(newRouterData)
+
+      const newRouter = response.router
+      setCreateModalOpen(false)
+
+      setRouters ((prev)=>[...prev, newRouter])
+    } catch (error) {
+      console.error('Problem with router creating ',error)
+      alert('Problem with router creating')
+    }
+    
+  }
+
+
+
   return (
     <div className="min-h-screen pb-60">
       <Header />
@@ -89,11 +108,14 @@ function App() {
         <RouterModal
           active={!!selectedRouter}
           setActive={handleCloseModal}
+          
           router={selectedRouter}
+          setCreateRouters
         />
       )}
 
-      {isCreateModalOpen && <CreateModal setActive={setCreateModalOpen} />}
+      {isCreateModalOpen && <CreateModal setActive={setCreateModalOpen}
+      handleCreate={handleCreate} />}
     </div>
   );
 }

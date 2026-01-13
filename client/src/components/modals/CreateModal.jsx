@@ -1,7 +1,14 @@
 import React from 'react'
+import { useState } from 'react';
 
-const CreateModal = ({  setActive }) => {
-  
+
+const CreateModal = ({  setActive , handleCreate}) => {
+  const [routerName, setRouterName]= useState('')
+  const [routerModel, setRouterModel] = useState('')
+  const [ routerStatus, setRouterStatus] = useState('')
+  const [routerIp, setRouterIp]= useState('')
+  const [routerPrice, setRouterPrice] = useState()
+  const [routerLocation, setRouterLocation] = useState('')
   return (
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fade-in"
@@ -26,6 +33,11 @@ const CreateModal = ({  setActive }) => {
             <label className="text-right text-sm font-medium text-zinc-400">Name</label>
             <input 
               placeholder="Enter name"
+              onChange={(e)=>{
+                let val=e.target.value
+                setRouterName(val)
+                console.log('Router name ',val)
+              }}
               className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400"
             />
           </div>
@@ -35,6 +47,27 @@ const CreateModal = ({  setActive }) => {
             <label className="text-right text-sm font-medium text-zinc-400">Model</label>
             <input 
               placeholder="Enter model"
+               onChange={(e)=>{
+                let val=e.target.value
+                setRouterModel(val)
+                console.log('Router model ',val)
+              }}
+              className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400"
+            />
+          </div>
+
+
+                     
+          <div className="grid grid-cols-4 items-center gap-4">
+            <label className="text-right text-sm font-medium text-zinc-400">Status</label>
+            <input 
+              
+               onChange={(e)=>{
+                let val=e.target.value
+                setRouterStatus((val))
+                console.log('Router status ',val)
+              }}
+              placeholder="active"
               className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400"
             />
           </div>
@@ -44,16 +77,42 @@ const CreateModal = ({  setActive }) => {
             <label className="text-right text-sm font-medium text-zinc-400">IP</label>
             <input 
               placeholder="192.168.0.1"
+               onChange={(e)=>{
+                let val=e.target.value
+                setRouterIp(val)
+                console.log('Router ip ',val)
+              }}
               className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400"
             />
           </div>
+
+        
+
 
          
           <div className="grid grid-cols-4 items-center gap-4">
             <label className="text-right text-sm font-medium text-zinc-400">Price</label>
             <input 
               type="number"
+               onChange={(e)=>{
+                let val=e.target.value
+                setRouterPrice(Number(val))
+                console.log('Router price',val)
+              }}
               placeholder="0.00"
+              className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400"
+            />
+          </div>
+
+          <div className="grid grid-cols-4 items-center gap-4">
+            <label className="text-right text-sm font-medium text-zinc-400">Location</label>
+            <input 
+                 onChange={(e)=>{
+                let val=e.target.value
+                setRouterLocation(val)
+                console.log('Router price',val)
+              }}
+              placeholder="Hall"
               className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400"
             />
           </div>
@@ -70,7 +129,20 @@ const CreateModal = ({  setActive }) => {
           </button>
           
           <button 
-            onClick={() => setActive(false)} 
+            onClick={() => {
+              const newRouter = {
+                name : routerName,
+                model: routerModel,
+                status: routerStatus,
+                price: routerPrice, 
+                ipAdress: routerIp,
+                location: routerLocation
+
+              }
+              handleCreate(newRouter)
+              setActive(false)
+            } 
+            }
             className="inline-flex items-center justify-center rounded-md text-sm font-medium bg-zinc-50 text-zinc-900 hover:bg-zinc-200 h-9 px-4 py-2 transition-colors"
           >
             Create

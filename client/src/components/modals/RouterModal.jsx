@@ -1,6 +1,10 @@
 import React from 'react'
 
+
 const RouterModal = ({ active, setActive }) => {
+
+  
+
   if (!active) return null
 
   return (
@@ -22,6 +26,7 @@ const RouterModal = ({ active, setActive }) => {
             <label className="text-right text-sm font-medium text-zinc-400">Name</label>
             <input 
               placeholder="Enter new name"
+              
               className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400"
             />
           </div>

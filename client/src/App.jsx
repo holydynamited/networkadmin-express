@@ -19,6 +19,27 @@ import {
 function App() {
   const [routers, setRouters] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+  const total = routers.length;
+  const active = routers.filter((r) => r.status === "active").length;
+  const value = routers.reduce((sum, r) => sum + Number(r.price), 0);
+
+
+  
+  const toggleModal = () => {
+    setCreateModalOpen(true);
+  };
+
+  const handleEditClick = (router) => {
+    setSelectedRouter(router);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedRouter(null);
+  };
+
+  const [selectedRouter, setSelectedRouter] = useState(null);
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
 
  
 
@@ -40,39 +61,8 @@ function App() {
     loadData();
   }, []);
 
-  const handleDelete = async (id) => {
-    try {
-      await deleteRouter(id);
-      
-      setRouters((prevRouters) =>
-        prevRouters.filter((router) => router._id !== id)
-      );
-    } catch (error) {
-     console.error('Problem with router deleting ', error ) 
-     alert('Problem with router deleting ')
-    }
-  };
 
-  const total = routers.length;
-  const active = routers.filter((r) => r.status === "active").length;
-  const value = routers.reduce((sum, r) => sum + Number(r.price), 0);
-
-  const [selectedRouter, setSelectedRouter] = useState(null);
-  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
-
-  const toggleModal = () => {
-    setCreateModalOpen(true);
-  };
-
-  const handleEditClick = (router) => {
-    setSelectedRouter(router);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedRouter(null);
-  };
-
-  const handleCreate = async (newRouterData) => {
+const handleCreate = async (newRouterData) => {
     try {
       const response = await createRouter(newRouterData)
 
@@ -87,6 +77,39 @@ function App() {
     
   }
 
+
+  const handleUpdate = async (id ,newRouterData) => {
+    try {
+      const response = await updateRouter(id,newRouterData)
+
+      const newRouter = response.router
+      handleCloseModal(null)
+
+      setRouters((prevRouters) => 
+        prevRouters.map((r) => (r._id === id ? newRouter : r))
+      );
+    } catch (error) {
+      console.error('Problem with router updating ',error)
+      alert('Problem with router updating')
+    }
+    
+  }
+
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteRouter(id);
+      
+      setRouters((prevRouters) =>
+        prevRouters.filter((router) => router._id !== id)
+      );
+    } catch (error) {
+     console.error('Problem with router deleting ', error ) 
+     alert('Problem with router deleting ')
+    }
+  }
+
+  
 
 
   return (
@@ -106,11 +129,11 @@ function App() {
       />
       {selectedRouter && (
         <RouterModal
+          key={selectedRouter._id}
           active={!!selectedRouter}
           setActive={handleCloseModal}
-          
           router={selectedRouter}
-          setCreateRouters
+         handleUpdate={handleUpdate}
         />
       )}
 

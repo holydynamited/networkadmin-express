@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 
 
+
 const CreateModal = ({  setActive , handleCreate}) => {
   const [routerName, setRouterName]= useState('')
   const [routerModel, setRouterModel] = useState('')
@@ -9,6 +10,9 @@ const CreateModal = ({  setActive , handleCreate}) => {
   const [routerIp, setRouterIp]= useState('')
   const [routerPrice, setRouterPrice] = useState()
   const [routerLocation, setRouterLocation] = useState('')
+
+  
+   
   return (
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fade-in"
@@ -36,7 +40,7 @@ const CreateModal = ({  setActive , handleCreate}) => {
               onChange={(e)=>{
                 let val=e.target.value
                 setRouterName(val)
-                console.log('Router name ',val)
+                
               }}
               className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400"
             />
@@ -50,7 +54,7 @@ const CreateModal = ({  setActive , handleCreate}) => {
                onChange={(e)=>{
                 let val=e.target.value
                 setRouterModel(val)
-                console.log('Router model ',val)
+                
               }}
               className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400"
             />
@@ -65,7 +69,7 @@ const CreateModal = ({  setActive , handleCreate}) => {
                onChange={(e)=>{
                 let val=e.target.value
                 setRouterStatus((val))
-                console.log('Router status ',val)
+                
               }}
               placeholder="active"
               className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400"
@@ -80,7 +84,7 @@ const CreateModal = ({  setActive , handleCreate}) => {
                onChange={(e)=>{
                 let val=e.target.value
                 setRouterIp(val)
-                console.log('Router ip ',val)
+                
               }}
               className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400"
             />
@@ -97,7 +101,7 @@ const CreateModal = ({  setActive , handleCreate}) => {
                onChange={(e)=>{
                 let val=e.target.value
                 setRouterPrice(Number(val))
-                console.log('Router price',val)
+                
               }}
               placeholder="0.00"
               className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400"
@@ -110,7 +114,7 @@ const CreateModal = ({  setActive , handleCreate}) => {
                  onChange={(e)=>{
                 let val=e.target.value
                 setRouterLocation(val)
-                console.log('Router price',val)
+                
               }}
               placeholder="Hall"
               className="col-span-3 flex h-9 w-full rounded-md border border-zinc-800 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400"
@@ -135,7 +139,7 @@ const CreateModal = ({  setActive , handleCreate}) => {
                 model: routerModel,
                 status: routerStatus,
                 price: routerPrice, 
-                ipAdress: routerIp,
+                ipAddress: routerIp,
                 location: routerLocation
 
               }
